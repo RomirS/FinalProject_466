@@ -1,1 +1,3 @@
 .DS_Store
+*.dnd
+__pycache__
