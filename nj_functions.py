@@ -57,19 +57,22 @@ def relaxed_neighbor_join(D):
     while len(D)>2:
       n = len(D)
       i, j, ui, uj = None, None, None, None
+      S_a = None
+      S_b = None
       for a in D:
-        S_a = {D[a][k] - (sum(D[a].values()) + sum(D[k].values()) - 2*D[a][k]) / (n - 2) for k in D if k != a}
+        ui = sum(D[a].values()) / (n - 2)
+        S_a = {D[a][k] - ui - sum(D[k].values()) / (n - 2) for k in D if k != a}
+        
         for b in D:
           if a == b:
             continue
-          S_b = {D[b][k] - (sum(D[b].values()) + sum(D[k].values()) - 2*D[b][k]) / (n - 2) for k in D if k != b}
+          uj = sum(D[b].values()) / (n - 2)
+          S_b = {D[b][k] - uj - sum(D[k].values()) / (n - 2) for k in D if k != b}
 
-
-          ui = (sum(D[a].values()) - D[a][b]) / (n - 2)
-          uj = (sum(D[b].values()) - D[a][b]) / (n - 2)
           S_ab = D[a][b] - ui - uj
+          S_ba = D[b][a] - uj - ui
 
-          if S_ab <= min(S_a) and S_ab <= min(S_b):
+          if S_ab <= min(S_a) and S_ba <= min(S_b):
             i, j = a, b
             break
 
