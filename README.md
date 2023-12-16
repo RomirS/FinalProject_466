@@ -10,3 +10,6 @@
 2. Set `file_loc` to `'./data/dist[X].txt'` where `[X]` is the desired input size
 3. Add the desired input size to `input_lengths`
 4. Rerun all cells
+
+### Dependencies (will be installed when running notebook)
+numpy, pandas, matplotlib, Bio
