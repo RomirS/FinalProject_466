@@ -1,6 +1,7 @@
 from copy import deepcopy
 import numpy as np
 
+# adapted from UIUC CS466
 def min_S_value(D, u):
     min_S, min_i, min_j = float("inf"),-1,-1
     for k in D:
@@ -13,6 +14,7 @@ def min_S_value(D, u):
                     min_j = l
     return (min_i, min_j)
 
+# adapted from UIUC CS466
 def neighbor_join(D):
     D = deepcopy(D)
 
@@ -48,7 +50,7 @@ def neighbor_join(D):
 
     return T
 
-
+# adapted from “Relaxed Neighbor Joining: A Fast Distance-Based Phylogenetic Tree Construction Method”
 def relaxed_neighbor_join(D):
     D = deepcopy(D)
 
@@ -107,7 +109,7 @@ def relaxed_neighbor_join(D):
     
     return T
 
-
+# adapted from “Rapid Neighbour-Joining”
 def rapid_neighbor_join(D, idx2node):
     # initialize data structures
     D = deepcopy(D)
